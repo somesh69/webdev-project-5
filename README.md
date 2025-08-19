@@ -43,7 +43,7 @@ CineFlix/
 
 Download or Clone this repository:
 
-[git clone] (https://github.com/somesh69/webdev-project-5)
+[git clone](https://github.com/somesh69/webdev-project-5)
 
 
 Open index.html in your browser.
@@ -66,3 +66,4 @@ Somesh pratap singh Intern @ Apex Planet Software Pvt. Ltd.
 
 
 👉[ Click Here to View Project](http://127.0.0.1:3000/ta5.html)
+

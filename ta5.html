@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineFlix – Modern Movie Streaming</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+   <link rel="stylesheet" href="ta5.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-wrap">
+      <div class="brand">
+        <div class="brand-logo">🎬</div>
+        <h1>CineFlix</h1>
+      </div>
+      <nav class="nav" id="nav">
+        <a href="#home" class="active">Home</a>
+        <a href="#catalog">Movies</a>
+        <a href="#trending">Trending</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="actions">
+        <button class="icon-btn" id="watchlistBtn">❤️ <span class="badge" id="wlCount">0</span></button>
+        <button class="icon-btn" id="themeBtn">🌓</button>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="slide">
+      <div class="slide-bg" id="heroBg"></div>
+      <div class="content container">
+        <h2 id="heroTitle">Blockbuster Week</h2>
+        <p id="heroSubtitle">Fresh picks – HD, ad‑free, anytime.</p>
+        <div class="cta">
+          <button class="btn btn-primary" id="playFeatured">▶ Play Trailer</button>
+          <a href="#catalog" class="btn btn-ghost">Browse Catalog</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Controls -->
+  <section class="controls container">
+    <div class="toolbar">
+      <div class="chips" id="genreChips"></div>
+      <div class="search"><input id="searchInput" type="search" placeholder="Search movies, actors, year…" /></div>
+      <select class="select" id="sortSelect">
+        <option value="">Sort by</option>
+        <option value="pop">Popularity</option>
+        <option value="rate">Rating</option>
+        <option value="new">Newest</option>
+        <option value="az">A → Z</option>
+      </select>
+      <div class="toggle" id="viewToggle">
+        <button data-view="grid" class="active">⊞ Grid</button>
+        <button data-view="list">☰ List</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog -->
+  <section id="catalog" class="section">
+    <div class="container">
+      <div class="section-header"><h3>All Movies</h3><span class="small" id="resultCount">0 results</span></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <!-- Trending -->
+  <section id="trending" class="section">
+    <div class="container">
+      <div class="section-header"><h3>🔥 Trending Now</h3><div class="marquee" id="trendRow"></div></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container about">
+      <div class="about-card">
+        <h3 style="margin-top:0">About CineFlix</h3>
+        <p class="small" style="color:var(--muted)">Stream smarter. We curate top‑rated cinema with crystal‑clear HD, real‑time recommendations, and zero ads on premium plans.</p>
+        <ul>
+          <li>⚡ Fast start, no buffering</li>
+          <li>🎧 Spatial audio where available</li>
+          <li>👪 Family profiles & watchlist sync</li>
+        </ul>
+      </div>
+      <div class="about-visual">
+        <div class="orb one"></div><div class="orb two"></div>
+        <div style="text-align:center">
+          <div style="font-size:48px">🍿</div>
+          <div class="small" style="color:var(--muted)">Lights. Camera. Stream.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="about-card">
+        <h3 style="margin-top:0">Contact Us</h3>
+        <form id="contactForm" class="small" style="display:grid;gap:10px;grid-template-columns:repeat(2,1fr)">
+          <input required name="name" placeholder="Full Name" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:var(--text)">
+          <input required type="email" name="email" placeholder="Email" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:var(--text)">
+          <input required name="subject" placeholder="Subject" style="grid-column:1/-1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:var(--text)">
+          <textarea required name="message" rows="4" placeholder="Your message" style="grid-column:1/-1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:var(--text)"></textarea>
+          <button class="btn btn-primary" type="submit" style="grid-column:1/-1">Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© <span id="year"></span> CineFlix • Built for demo</div>
+  </footer>
+
+  <!-- Watchlist Modal -->
+  <div class="modal" id="wlModal">
+    <div class="overlay" data-close="#wlModal"></div>
+    <div class="modal-box">
+      <div class="modal-header"><h4 style="margin:0">Your Watchlist</h4><button class="close" data-close="#wlModal">×</button></div>
+      <div class="modal-content">
+        <div id="wlItems" class="grid" style="grid-template-columns:repeat(3,1fr)"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div class="modal" id="qvModal">
+    <div class="overlay" data-close="#qvModal"></div>
+    <div class="modal-box">
+      <div class="modal-header"><h4 style="margin:0">Preview</h4><button class="close" data-close="#qvModal">×</button></div>
+      <div class="modal-content" id="qvContent"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+   <script src="ta5.js"></script>
+  </body>
+  </html>
+
